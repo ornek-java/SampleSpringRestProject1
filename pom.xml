@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ndr.sample</groupId>
-	<artifactId>SampleSpringRestProject1</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>samplespringrestproject</artifactId>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>SampleSpringRest</name>
@@ -12,7 +12,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<docker.image.prefix>pricing</docker.image.prefix>
-		<start-class>com.ndr.ruletext.service.main.RuleTextServiceApplication</start-class>
+		<start-class>com.ndr.sample.spring.rest.main.SampleSpringRestServerApplication</start-class>
 	</properties>
 
 	<parent>
@@ -45,7 +45,6 @@
 		</dependency>
 
 	</dependencies>
-
 	
 
 	<build>
@@ -60,12 +59,13 @@
 				<artifactId>dockerfile-maven-plugin</artifactId>
 				<version>1.4.2</version>
 				<configuration>
-					<dockerHost>https://192.168.99.100</dockerHost>
+					<googleContainerRegistryEnabled>false</googleContainerRegistryEnabled>
+					 <dockerFile>${project.basedir}/Dockerfile</dockerFile >
 					<repository>
 						${docker.image.prefix}/${project.artifactId}
 					</repository>
 					<buildArgs>
-						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+						<JAR_FILE>./target/${project.build.finalName}.jar</JAR_FILE>
 					</buildArgs>
 				</configuration>
 			</plugin>

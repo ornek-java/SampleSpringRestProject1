@@ -1,6 +1,7 @@
 FROM java:8
 WORKDIR /
-ARG JAR_FILE
-COPY ${JAR_FILE} . 
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","samplespringrestproject-0.0.1.jar"]
+ARG MAIN_JAR_FILE
+ARG JAR_FILE_PATH
+ENV main_jar_file=${MAIN_JAR_FILE}
+COPY ${JAR_FILE_PATH} . 
+ENTRYPOINT java -jar $main_jar_file

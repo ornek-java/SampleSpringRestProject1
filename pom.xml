@@ -65,7 +65,8 @@
 						${docker.image.prefix}/${project.artifactId}
 					</repository>
 					<buildArgs>
-						<JAR_FILE>./target/${project.build.finalName}.jar</JAR_FILE>
+						<MAIN_JAR_FILE>${project.build.finalName}.jar</MAIN_JAR_FILE>
+						<JAR_FILE_PATH>./target/${project.build.finalName}.jar</JAR_FILE_PATH>
 					</buildArgs>
 				</configuration>
 			</plugin>
